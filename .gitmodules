@@ -1,3 +1,6 @@
 [submodule "box/picoCTF"]
 	path = box/picoCTF
 	url = https://github.com/picoCTF/picoCTF.git
+[submodule "box/CTFd"]
+	path = box/CTFd
+	url = https://github.com/CTFd/CTFd.git

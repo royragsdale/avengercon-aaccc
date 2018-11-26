@@ -21,6 +21,7 @@ all:
       nginx_server_name     : "_"
       flask_app_server_name : "{{ web_fqdn }}"
       web_address_internal  : "{{ web_address }}"
+      gunicorn_listen_on    : "127.0.0.1:8888"        # deconflict with CTFd
 
       # optional web automation
       enable_basic_auth     : False

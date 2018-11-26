@@ -1,6 +1,7 @@
 ---
-# Playbook to deploy the entire picoCTF environment
+# Playbook to provision the CTF dev environment
 
+# picoCTF
 - hosts: dev.ctf.localhost
   remote_user: "{{ ansible_user }}"
   become: yes
@@ -10,3 +11,27 @@
     - {role: mongodb    , tags: ["db"]}
     - {role: pico-shell , tags: ["shell"]}
     - {role: pico-web   , tags: ["web"]}
+
+# CTFd
+- hosts: dev.ctf.localhost
+  remote_user: "{{ ansible_user }}"
+  roles:
+    - {role: docker    , tags: ["docker"]}
+  post_tasks:
+    - name: Copy Source to non synced directory
+      synchronize:
+        src: /CTFd
+        dest: ~/CTFd
+      delegate_to: "{{ inventory_hostname }}"
+
+    - name: Create Secret Key
+      shell: python -c "import os; f=open('.ctfd_secret_key', 'a+'); f.write(os.urandom(64)); f.close()"
+      args:
+        chdir: ~/CTFd
+      tags: ["ctfd"]
+
+    - name: Start CTFd
+      shell: docker-compose up -d
+      args:
+        chdir: ~/CTFd
+      tags: ["ctfd"]

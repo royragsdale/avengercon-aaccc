@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
 
     # sync in source code
     box.vm.synced_folder "./picoCTF", "/picoCTF"
+    box.vm.synced_folder "./CTFd", "/CTFd"
     box.vm.synced_folder ".", "/vagrant", disabled: true    # disable default synced folder
 
     # pre-requisite for ansible
