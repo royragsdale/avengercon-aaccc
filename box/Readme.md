@@ -16,3 +16,5 @@ configured.
 - [CTFd](https://github.com/CTFd/CTFd)
   - source at `~/CTFd`
   - <http://192.168.9.9:8000>
+- [workshop](https://github.com/royragsdale/avengercon-taoccc)
+  - source at `~/workshop`

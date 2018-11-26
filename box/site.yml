@@ -35,3 +35,14 @@
       args:
         chdir: ~/CTFd
       tags: ["ctfd"]
+
+# workshop
+- hosts: dev.ctf.localhost
+  remote_user: "{{ ansible_user }}"
+  roles:
+  tasks:
+    - name: Clone workshop repo
+      git:
+        repo: 'https://github.com/royragsdale/avengercon-taoccc.git'
+        dest: ~/workshop
+      tags: ["workshop"]
