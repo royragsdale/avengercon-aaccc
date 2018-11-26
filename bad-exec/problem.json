@@ -1,0 +1,9 @@
+{
+  "name": "Bad Exec",
+  "category": "Pwnable",
+  "description": "We're letting you run shell commands at {{server}}:{{port}}, but you can't cat flag! Good luck getting our secrets now, hacker!",
+  "score" : 50,
+  "hints": [],
+  "author": "pr0ph3t",
+  "organization": "bfe"
+}
