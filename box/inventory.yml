@@ -1,0 +1,62 @@
+
+###
+# Host configuration
+# This mirrors the settings from upstream picoCTF/ansible/group_vars/local_development/vars.yml
+###
+
+all:
+  hosts:
+    dev.ctf.localhost:
+      ansible_host                : "192.168.9.9"
+      ansible_user                : "vagrant"
+      ansible_ssh_private_key_file: ".vagrant/machines/dev.ctf.localhost/virtualbox/private_key"  # vagrant created
+
+      ## common settings
+      hostname      : "dev.ctf.localhost"
+      pico_base_dir : "/picoCTF"
+
+      ## web settings
+      web_fqdn              : "localhost"
+      web_address           : "http://{{ansible_host}}"
+      nginx_server_name     : "_"
+      flask_app_server_name : "{{ web_fqdn }}"
+      web_address_internal  : "{{ web_address }}"
+
+      # optional web automation
+      enable_basic_auth     : False
+      auto_add_shell        : True
+      auto_load_problems    : True
+      auto_start_competition: True
+
+      # shell settings
+      shell_hostname              : "{{ansible_host}}"
+      shell_name                  : "Local-Development-Shell"   # no spaces
+      shell_ip                    : "{{ shell_hostname }}"
+      shell_user                  : "{{ ansible_user }}"
+      shell_pass                  : "vagrant"
+      shell_manager_deploy_secret : "**insecure-secret**"
+
+      # default insecure "vagrant" password (mkpasswd --method=SHA-512 vagrant)
+      shell_admin_password_crypt: "$6$0GcSqMClzx$qEKEiL78VE/Xe0gzuGGuWyUqAlZMObkGnRYwHo4.vSUlvWt6aA7PBH1oGDsOQlykFNScEdEhrirD5oFLOHH011"
+
+      # python virtualenv settings
+      virtualenv_dir: "/picoCTF-env"
+
+      # database settings
+      db_private_ip     : "127.0.0.1"
+      mongodb_conf_auth : False
+
+      # problem settings
+      #problem_source_dirs:
+      #  - "/challenges"
+
+      #bundles:
+      #  - {source   : "/challenges/bundles/sprint2.json",
+      #     name     : "s2-aacs-2018",
+      #     instances: 2}
+
+  children:
+    # include in "local_development" group to signal to common/tasks/main.yml that source is synced in
+    local_development:
+      hosts:
+        dev.ctf.localhost:

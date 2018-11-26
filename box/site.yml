@@ -1,0 +1,12 @@
+---
+# Playbook to deploy the entire picoCTF environment
+
+- hosts: dev.ctf.localhost
+  remote_user: "{{ ansible_user }}"
+  become: yes
+  become_method: sudo
+  roles:
+    - {role: common     , tags: ["common"]}
+    - {role: mongodb    , tags: ["db"]}
+    - {role: pico-shell , tags: ["shell"]}
+    - {role: pico-web   , tags: ["web"]}
