@@ -17,7 +17,7 @@ Commands and details worth remembering.
 For download on a local network
 
 ```
-docker run --rm -it -p 80:80 -v $(pwd):/usr/share/nginx/html:roginx
+docker run --rm -it -p 80:80 -v $(pwd):/usr/share/nginx/html:ro nginx
 ```
 
 ### Package the box

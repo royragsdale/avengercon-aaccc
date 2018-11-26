@@ -3,6 +3,10 @@
 This repository contains the supporting materials for a workshop originally
 presented at AvengerCon, 26 November 2018.
 
+[slides](https://docs.google.com/presentation/d/1bC4gneLJbIGtOxKY-Q92-JmRQEJNyKhIpWaq_kklC9c/edit?usp=sharing)
+
+[setup](./Setup.md)
+
 ## Abstract
 
 Capture the Flag (CTF) competitions are a cornerstone of computer security
