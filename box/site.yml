@@ -6,6 +6,13 @@
   remote_user: "{{ ansible_user }}"
   become: yes
   become_method: sudo
+  pre_tasks:
+    - name: Copy Source to non synced directory
+      synchronize:
+        src: /sync/picoCTF/
+        dest: /picoCTF
+      delegate_to: "{{ inventory_hostname }}"
+      tags: ["sync"]
   roles:
     - {role: common     , tags: ["common"]}
     - {role: mongodb    , tags: ["db"]}
@@ -16,7 +23,7 @@
 - hosts: dev.ctf.localhost
   remote_user: "{{ ansible_user }}"
   roles:
-    - {role: docker    , tags: ["docker"]}
+    - {role: docker    , tags: ["docker"], become: yes}
   post_tasks:
     - name: Copy Source to non synced directory
       synchronize:
