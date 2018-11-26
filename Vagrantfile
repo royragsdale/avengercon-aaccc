@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
 
-    box.vm.box = "royragsdale/avengercon-taoccc"
-    box.vm.network "private_network", ip: '192.168.9.9'
+    config.vm.box = "royragsdale/avengercon-taoccc"
+    config.vm.network "private_network", ip: '192.168.9.9'
 
 end

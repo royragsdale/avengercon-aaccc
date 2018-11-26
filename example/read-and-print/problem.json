@@ -1,0 +1,9 @@
+{
+  "name": "Read and Print",
+  "category": "Binary Exploitation",
+  "description": "Get the flag from this {{url_for('myproblem', display='service')}} found here: {{server}}:{{port}}.",
+  "score" : 50,
+  "hints": ["Try using netcat to connect"],
+  "author": "Roy Ragsdale",
+  "organization": "ACI"
+}
